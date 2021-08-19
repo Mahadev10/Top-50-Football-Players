@@ -20,13 +20,16 @@ if page.status_code==req.codes.ok:
        name=p.find('td',class_='name')
        team=p.find('span',class_='club-name')
        nation=p.find('td',class_='age')
+       age=p.find('td',class_='stat')
        if rank and name and team and nation:
            rank=rank.text
            name=name.find('a').text
            team=team.find('a').text
            nation=nation.find_all('a')[-1].text
+           age=age.text
            players_data['Rank'].append(rank)
            players_data['Name'].append(name)
            players_data['Team'].append(team)
            players_data['Nation'].append(nation)   
+           players_data['Age'].append(age)
     print(players_data)       
