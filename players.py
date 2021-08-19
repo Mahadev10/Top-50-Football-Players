@@ -12,3 +12,15 @@ players_data={
     'Nation':[],
     'Age':[]
 }
+if page.status_code==req.codes.ok:
+    bs=BeautifulSoup(page.text,'lxml')
+    l=bs.find('table',id="playerTopList").find('tbody').find_all('tr')
+    for p in l:
+       rank=p.find('span',class_='number')
+       name=p.find('td',class_='name')
+       if rank and name:
+           rank=rank.text
+           name=name.find('a').text
+           players_data['Rank'].append(rank)
+           players_data['Name'].append(name)   
+    print(players_data)       
