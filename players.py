@@ -32,4 +32,6 @@ if page.status_code==req.codes.ok:
            players_data['Team'].append(team)
            players_data['Nation'].append(nation)   
            players_data['Age'].append(age)
-    print(players_data)       
+    data=pd.DataFrame(players_data,columns=['Rank','Name','Age','Team','Nation'])
+    data.index+=1
+    data.to_csv("Top_50_fb_players.csv",encoding='utf-8',index=False)    
